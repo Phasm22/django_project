@@ -11,10 +11,7 @@ admin_site = MyAdminSite(name="admin")
 admin_site.register(User, UserAdmin)
 admin_site.register(Group, GroupAdmin)
 
-class StudentAdmin(admin.ModelAdmin):
-    pass
-
-admin_site.register(Student, StudentAdmin)
+admin_site.register(Student)
 admin_site.register(Portfolio)
 admin_site.register(Project)
 

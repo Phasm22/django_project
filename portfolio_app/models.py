@@ -49,7 +49,7 @@ class Student(models.Model):
     def get_absolute_url(self):
         return reverse('student-detail', args=[str(self.id)])
 
-# Project model with a Forei gnKey relationship with Portfolio
+# Project model with a  ForeignKey relationship with Portfolio
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()

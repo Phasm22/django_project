@@ -62,9 +62,3 @@ class Project(models.Model):
     
     def get_absolute_url(self):
         return reverse('project-detail', args=[str(self.id)])
-
-class StudentListView(generic.ListView):
-    model = Student
-
-class StudentDetailView(generic.DetailView):
-    model = Student

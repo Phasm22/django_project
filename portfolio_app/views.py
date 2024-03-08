@@ -13,7 +13,13 @@ def index(request):
 
 class PortfolioDetailView(DetailView):  # new line
     model = Portfolio  # new line
-    
+    template_name = 'portfolio_app/portfolio_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Projects'] = Project.objects.filter(portfolio=self.object)
+        return context
+
 class StudentListView(generic.ListView):
     model = Student
 

@@ -12,6 +12,7 @@ class PortfolioForm(ModelForm):
     class Meta:
         model = Portfolio
         fields = ('title', 'contact_email', 'is_active', 'about',)
+
 class CreateUserForm(ModelForm):
     pass
 

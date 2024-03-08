@@ -1,16 +1,18 @@
 {% extends 'portfolio_app/base_template.html' %}
 
 {% block content %}
+<div class="container-fluid">
     <h1>Student List</h1>
     {% if student_list %}
-        <ul>
             {% for student in student_list %}
-                <li>
-                    <a href="{{ student.get_absolute_url }}">{{ student.name }}</a>
-                </li>
+                <div class="btn-group mr-2">
+                    <a href="{{ student.get_absolute_url }}" class="btn btn-dark btn-lg mb-3">
+                        <i class="fas fa-user"></i> {{ student.name }}
+                    </a>
+                </div>
             {% endfor %}
-        </ul>
     {% else %}
         <p>There are no students registered.</p>
     {% endif %}
+</div>
 {% endblock %}

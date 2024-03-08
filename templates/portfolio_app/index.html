@@ -7,10 +7,12 @@
     <h2> List of Students with Active Portfolios</h2>
     <ul class="list-group">
         {% for i in student_active_portfolios %}
-        <li class="list-group-item">Name: {{i.name}}
-            <p><strong>Portfolio: {{ i.portfolio.title }}
-
+        <li class="list-group-item">
+            <span class="fas fa-user"></span> Name: {{i.name}}
+            <p><strong><span class="fas fa-briefcase"></span> Portfolio: {{ i.portfolio.title }}   
             </strong></p>
+            <!-- Add a button that links to the student-detail page for this student -->
+            <a href="{% url 'portfolio-detail' i.id %}" class="btn btn-info"><strong>View</strong></a>
         </li>
         {% endfor %}
     </ul>

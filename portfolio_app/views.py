@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
 from .models import *
 from .forms import ProjectForm, PortfolioForm, CreateUserForm, StudentForm
 
@@ -50,6 +52,15 @@ class ProjectUpdateView(UpdateView):
     
     def get_success_url(self):
         return reverse('portfolio-detail', kwargs={'pk': self.object.portfolio.id})
+    
+class ProjectDeleteView(DeleteView):
+    model = Project
+    template_name = 'portfolio_app/project_confirm_delete.html'  # replace with your actual template
+    success_url = reverse_lazy('projects')
+
+    def get_success_url(self):
+        portfolio_id = self.object.portfolio.id
+        return reverse('portfolio-detail', args=[portfolio_id])
 class StudentListView(generic.ListView):
     model = Student
 
@@ -76,9 +87,3 @@ def createProject(request, pk):
             return redirect('portfolio-detail', pk)
     context = {'form': form, 'action': 'Add', 'object_type': 'Project'}
     return render(request, 'portfolio_app/project_form.html', context)
-
-def deleteProject(request, pk):
-    project = Project.objects.get(pk=pk)
-    portfolio_id = project.portfolio.id
-    project.delete()
-    return redirect('portfolio-detail', portfolio_id)

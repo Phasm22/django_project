@@ -19,5 +19,5 @@ path('portfolio/<int:pk>/project/create/', views.createProject, name='create-pro
 # update project
 path('project/<int:pk>/update/', views.ProjectUpdateView.as_view(), name='update-project'),
 # delete project
-path('project/<int:pk>/delete/', views.deleteProject, name='delete-project'),
+path('project/<int:pk>/delete/', views.ProjectDeleteView.as_view(), name='delete-project'),
 ]

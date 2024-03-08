@@ -6,17 +6,28 @@
 <p><strong>About:</strong> {{ portfolio.about }}</p>
 <p><strong>Contact Email:</strong> {{ portfolio.email }}</p>
 
-<h2><i class="fas fa-clipboard"></i> Projects</h2>
+<div class="row align-items-center">
+    <div class="col-2">
+        <h2 class="mb-0 p-1"><i class="fas fa-clipboard"></i> Projects </h2>
+    </div>
+    <div class="col-1 text-right">
+        <a href="{% url 'create-project' portfolio.id %}" class="btn btn-success">New</a>
+    </div>
+</div>
 <!-- Add a for loop for Projects-->
 {% if Projects %}
     {% for project in Projects %}
-        <div class="card"  style="width: 25rem;">
+        <div class="card mb-3"  style="width: 25rem; ">
             <div class="card-header">
                 {{ project.title }}
             </div>
             <div class="card-body">
                 <h5>Description:</h5> <br>
                 {{project.description}}
+            <!-- Add update and delete button-->
+            <br>
+            <a href="{% url 'update-project' project.id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'delete-project' project.id %}" class="btn btn-danger">Delete</a>  
             </div>
         </div>
     {% endfor %}

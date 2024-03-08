@@ -1,0 +1,18 @@
+{% extends 'portfolio_app/base_template.html' %}
+
+{% block content %}
+    <h2>{{ action }} {{ object_type }}</h2>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group row">
+            <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+            <div class="col-sm-10">
+                {{ field }}
+            </div>
+        </div>
+        {% endfor %}
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+{% endblock %}

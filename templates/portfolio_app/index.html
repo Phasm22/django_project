@@ -13,6 +13,9 @@
             </strong></p>
             <!-- Add a button that links to the student-detail page for this student -->
             <a href="{% url 'portfolio-detail' i.id %}" class="btn btn-info"><strong>View</strong></a>
+            <!-- Add a button that links to the update portfolio form -->
+            <a href="{% url 'portfolio-update' i.portfolio.id %}" class="btn btn-warning"><strong>Update</strong></a>
+            
         </li>
         {% endfor %}
     </ul>
